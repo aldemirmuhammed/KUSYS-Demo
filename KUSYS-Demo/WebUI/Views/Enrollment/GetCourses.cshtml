@@ -1,0 +1,40 @@
+﻿@model EnrollmentByStudentIdViewModel
+@{
+    ViewData["Title"] = "Add Enrollment";
+}
+<br />
+<div class="card">
+    <div class="container p-6">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-info">Course List</h2>
+            </div>
+            <div class="col-6">
+                <h2 class="text-info"> @Model.Student.FullName</h2>
+            </div>
+        
+        </div>
+        <br />
+        <div style="height: auto; overflow: auto;">
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th style="width:20%">Course Code</th>
+                        <th style="width:20%">Course Name</th>
+                    </tr>
+                </thead>
+                
+                @foreach (var s in Model.CourseList)
+                {
+                    <tr>
+                        <td>@s.Code</td>
+                        <td>@s.FullName</td>
+                        <td><a href="/Enrollment/AddEnrollment/@s.Id" class="btn btn-primary" style="width:100px">See and Add</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+    </div>
+

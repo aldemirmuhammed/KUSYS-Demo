@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Logout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>LogOut</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-controller="Account" asp-controller="Logout">
+            <header>
+                <h1>@ViewData["Title"]</h1>
+                <p>You have successfully logged out of the application.</p>
+            </header>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

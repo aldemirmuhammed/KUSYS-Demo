@@ -1,0 +1,54 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "Student List";
+}
+<br />
+<div class="card">
+    <div class="container p-6">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-info">Student List</h2>
+            </div>
+            
+        </div>
+        <br />
+        <div style="height: auto; overflow: auto;">
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th style="width:10%">Student No</th>
+                        <th style="width:20%">Firs Name</th>
+                        <th style="width:20%">Last Name</th>
+                        <th style="width:15%">Username</th>
+                        <th style="width:15%">Password</th>
+                        <th style="width:15%">BirthDate</th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.Id</td>
+                        <td>@s.Name</td>
+                        <td>@s.LastName</td>
+                        <td>@s.User.UserName</td>
+                        <td>@s.User.Password</td>
+                        <td>@s.BirthDate</td>
+                        <td><a href="/Enrollment/GetCourses/@s.Id" class="btn btn-primary" style="width:100px">See and Add</a></td>
+                 </tr>
+                }
+            </table>
+        </div>
+       
+    </div>
+    </div>
+
+
+
+@*Client Side Validation*@
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

@@ -1,0 +1,48 @@
+﻿@using Models.Concrete.ViewModels.EnrollmentVMs;
+@model EnrollmentFullViewModel
+
+@{
+    ViewData["Title"] = "Enrollment List";
+}
+
+<br />
+<div class="card">
+    <div class="container p-6">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-info">Enrollment List</h2>
+            </div>
+            @*<div class="col-6 text-end">
+                <a asp-controller="Enrollment" asp-action="Add" class="btn btn-info">Add New Enrollment</a>
+            </div>*@
+
+            <div class="col-6 text-end">
+                <a asp-controller="Enrollment" asp-action="GetStudents" class="btn btn-info">Add New Enrollments</a>
+            </div>
+
+        </div>
+        <br />
+
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th style="width:20%">Student</th>
+                    <th style="width:20%">Course</th>
+                </tr>
+            </thead>
+
+            @foreach (var examGrade in Model.EnrollmentList)
+            {
+                <tr>
+                    <td>@Model.StudentList.FirstOrDefault(s => s.Id == examGrade.StudentId)?.FullName </td>
+                    <td>@Model.CourseList.FirstOrDefault(c => c.Id == examGrade.CourseId)?.FullName </td>
+                    
+                </tr>
+            }
+        </table>
+
+        <div class="col-12"> 
+            <a asp-controller="Student" asp-action="Index" class="btn btn-danger" style="width:150px">Back to List</a>
+        </div>
+    </div>
+</div>

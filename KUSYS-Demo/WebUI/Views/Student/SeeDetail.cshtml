@@ -1,0 +1,51 @@
+﻿@using Models.Helper;
+@model Student
+
+@{
+    ViewData["Title"] = $"See Detail {Model.FullName}";
+}
+
+<br />
+<div class="card" style="width:100%">
+    <div class="container p-6" style="width:100%">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-info">@Model.FullName</h2>
+            </div>         
+        </div>
+
+        <br />
+
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th style="width:10%">Student No</th>
+                    <th style="width:20%">Firstname</th>
+                    <th style="width:20%">Lastname</th>
+                    <th style="width:5%">Username</th>
+                    <th style="width:5%">Password</th>
+                    <th style="width:5%">Birth Date</th>
+                    <th style="width:5%">Create Date</th>
+                    <th style="width:5%">Role</th>
+                </tr>
+            </thead>
+
+
+            <tr>
+                <td>@Model.StudentNo</td>
+                <td>@Model.Name</td>
+                <td>@Model.LastName</td>
+                <td>@Model.User.UserName</td>
+                <td>@Model.User.Password</td>
+                <td>@Model.BirthDate</td>
+                <td>@Model.User.CreateDate</td>
+                <td>@Enum.GetName(typeof(HelperEnum.RoleType),  @Model.User.Role)</td>
+                
+            </tr>
+
+        </table>
+        <div class="col-12 mb-2 mt-4">
+            <a asp-controller="Student" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+        </div>
+    </div>
+</div>

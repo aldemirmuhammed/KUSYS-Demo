@@ -1,0 +1,61 @@
+﻿@using Models.Concrete.ViewModels.EnrollmentVMs
+@*@model EnrollmentFullViewModel
+*@
+
+@model Student
+@{
+    ViewData["Title"] = "My Enrollment";
+}
+
+<br />
+<div class="card">
+    <div class="container p-6">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-info">My Enrollment</h2>
+
+            </div>
+        </div>
+        <br />
+        <div style="height: auto; overflow: auto;">
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th style="width:20%">Student Name</th>
+                        <th style="width:20%">Student No</th>
+                        <th style="width:20%">Course Code</th>
+                        <th style="width:20%">Course Name</th>
+
+                    </tr>
+                </thead>
+
+
+                @if (Model.Enrollments.Count == 0)
+                {
+                    <tr>
+                        <td><a href="/Enrollment/GetCourses/@Model.Id" class="btn btn-primary" style="width:100px">See and Add</a></td>
+                    </tr>
+
+                }
+                else
+                {
+                    @foreach (var item2 in Model.Enrollments)
+                    {
+                        <tr>
+                            <td>@item2.Student.FullName</td>
+                            <td>@item2.Student.StudentNo</td>
+                            <td>@item2?.Course.Code </td>
+                            <td>@item2?.Course.Name </td>
+                            <td><a href="/Enrollment/GetCourses/@item2?.Student.Id" class="btn btn-primary" style="width:100px">See and Add</a></td>
+
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+        <div class="col-12">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-danger" style="width:150px">Back to Home</a>
+        </div>
+    </div>
+</div>
